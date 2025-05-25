@@ -1,12 +1,16 @@
-// --- src/components/CTA.jsx ---
+"use client";
+
 export function CTA() {
   return (
     <section className="bg-blue-800 text-white py-20 px-6 text-center">
       <h2 className="text-3xl font-bold mb-4">Try B2S Today</h2>
       <p className="mb-6">Join hundreds of brands simplifying retail connections.</p>
-      <button className="bg-white text-blue-800 font-bold px-6 py-3 rounded hover:bg-gray-200">
+      <a
+        href="/signup.html"
+        className="inline-block bg-white text-blue-800 font-bold px-6 py-3 rounded hover:bg-gray-200 transition"
+      >
         Sign Up Free
-      </button>
+      </a>
     </section>
   );
 }

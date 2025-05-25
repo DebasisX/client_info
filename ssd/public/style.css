@@ -1,6 +1,7 @@
+/* For signup page */
 
 body {
-  background: linear-gradient(135deg, #3b82f6, #9333ea);
+  background: linear-gradient(135deg, #3b82f6, #9333ea); /* Blue to Purple gradient */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
   margin: 0;
@@ -10,7 +11,7 @@ body {
 .container {
   max-width: 500px;
   margin: 60px auto;
-  background-color: #ffffffcc;
+  background-color: #ffffffcc; /* semi-transparent white */
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   padding: 2.5rem 2rem;
@@ -34,7 +35,7 @@ h2 {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  color: #1e3a8a;
+  color: #1e3a8a; 
 }
 
 input,
@@ -73,18 +74,34 @@ button:hover {
   transform: scale(1.03);
 }
 
-#responseMessage {
-  margin-top: 1rem;
+.response-message {
+  display: none;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 8px;
   text-align: center;
   font-weight: bold;
-  color: green;
-  display: none;
+}
+
+.response-message.visible {
+  display: block;
+}
+
+.error-message {
+  background-color: #fee2e2;
+  color: #dc2626;
+  border: 1px solid #fca5a5;
+}
+
+.success-message {
+  background-color: #dcfce7;
+  color: #16a34a;
+  border: 1px solid #86efac;
 }
 
 
 /* for login page */
 
-/* styles.css */
 body.login-body {
   margin: 0;
   font-family: "Segoe UI", sans-serif;

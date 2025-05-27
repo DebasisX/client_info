@@ -8,7 +8,7 @@ function HomePage() {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/clients/api/products/')
+    axios.get('http://localhost:5000/products')
       .then(response => setProducts(response.data))
       .catch(error => console.error('Failed to fetch products:', error));
   }, []);
@@ -27,63 +27,64 @@ function HomePage() {
 
     setCart(updatedCart);
 
-    // Send current quantity of this product to API
     const productInCart = updatedCart.find(item => item.id === productId);
 
-    axios.post('https://api.example.com/add-to-cart', {
+    axios.post('http://localhost:5000/add-to-cart', {
       itemId: productId,
       quantity: productInCart.quantity,
-    })
-    .catch(error => console.error('Failed to add to cart:', error));
+    }).catch(error => console.error('Failed to add to cart:', error));
   };
 
   const checkout = () => {
-  axios.post('http://127.0.0.1:8000/clients/api/checkout/', {
-    items: cart
-  })
-  .then(response => {
-    // response.data contains updated products with new quantities
-    setProducts(response.data);  //updated state
-    setCart([]);                // clear the cart after successful
-    alert('Checkout successful!');
-  })
-  .catch(error => {
-    console.error('Checkout failed:', error);
-  });
-};
-
+    axios.post('http://localhost:5000/checkout', {
+      items: cart
+    })
+    .then(response => {
+      alert('Checkout successful!');
+      setCart([]);
+    })
+    .catch(error => {
+      console.error('Checkout failed:', error);
+    });
+  };
 
   return (
-    <div className="px-6 py-4 bg-black min-h-screen text-white">
-      <h1 className="text-3xl font-bold mb-6 text-white text-center">
-        Explore Our Products
-      </h1>
+    <div className="bg-white text-gray-800 min-h-screen">
+      <header className="bg-blue-900 text-white py-6 shadow-md">
+        <h1 className="text-4xl font-bold text-center">Welcome to JAYA</h1>
+        <p className="text-center text-sm mt-1">Shop the latest tech gadgets and accessories</p>
+      </header>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {products.map(product => {
-          // find quantity in cart or 0
-          const itemInCart = cart.find(item => item.id === product._id);
-          const quantity = itemInCart ? itemInCart.quantity : 0;
+      <main className="px-6 py-10 max-w-7xl mx-auto">
+        <h2 className="text-2xl font-semibold mb-6 text-center text-blue-800">Explore Our Products</h2>
 
-          return (
-            <ProductCard
-              key={product._id}
-              product={product}
-              count={quantity}
-              addToCart={addToCart}
-            />
-          );
-        })}
-      </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {products.map(product => {
+            const itemInCart = cart.find(item => item.id === product.id);
+            const quantity = itemInCart ? itemInCart.quantity : 0;
 
-      <div className="mt-8 text-center">
-        <button
-          onClick={checkout}
-          className="bg-white text-black py-2 px-4 rounded hover:bg-gray-300 transition"
-        >
-          Checkout
-        </button>
-      </div>
+            return (
+              <ProductCard
+                key={product.id}
+                product={product}
+                count={quantity}
+                addToCart={addToCart}
+              />
+            );
+          })}
+        </div>
+
+        {cart.length > 0 && (
+          <div className="mt-12 text-center">
+            <button
+              onClick={checkout}
+              className="bg-blue-800 hover:bg-blue-900 text-white px-6 py-3 rounded-lg text-lg transition"
+            >
+              Checkout ({cart.reduce((sum, item) => sum + item.quantity, 0)} items)
+            </button>
+          </div>
+        )}
+      </main>
     </div>
   );
 }

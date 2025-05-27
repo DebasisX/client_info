@@ -1,0 +1,50 @@
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  background-color: #ffffff;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sliderImage {
+  width: 100%;
+  max-width: 1000px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 0.3s ease;
+}
+
+.navButton:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.navButton:first-of-type {
+  left: 0.5rem;
+}
+
+.navButton:last-of-type {
+  right: 0.5rem;
+}

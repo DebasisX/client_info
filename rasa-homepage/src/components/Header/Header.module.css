@@ -1,0 +1,118 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background-color: #1d4ed8; /* Blue-700 */
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  flex-shrink: 0;
+}
+
+.nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Search */
+.searchContainer {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 5px;
+  padding: 0.25rem 0.5rem;
+  color: #1d4ed8;
+}
+
+.searchInput {
+  border: none;
+  outline: none;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.9rem;
+  color: #1d4ed8;
+}
+
+.searchIcon {
+  font-size: 1rem;
+  margin-left: 0.5rem;
+}
+
+/* Profile Dropdown */
+.profileWrapper {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 2.5rem;
+  background-color: white;
+  color: #1d4ed8;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+}
+
+.dropdown a {
+  text-decoration: none;
+  color: #1d4ed8;
+}
+
+.dropdown a:hover {
+  font-weight: bold;
+}
+
+/* Nav Buttons (for cart/transactions) */
+.navButton {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: white;
+  text-decoration: none;
+}
+
+.navIcon {
+  font-size: 1.25rem;
+}
+
+.navText {
+  display: inline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .searchContainer {
+    background-color: transparent;
+    padding: 0;
+  }
+
+  .searchInput {
+    display: none;
+  }
+
+  .searchIcon {
+    color: white;
+    font-size: 1.25rem;
+    margin-left: 0;
+  }
+
+  .navText {
+    display: none;
+  }
+}
